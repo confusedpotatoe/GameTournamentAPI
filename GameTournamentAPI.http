@@ -1,6 +1,15 @@
-@GameTournamentAPI_HostAddress = http://localhost:5175
+@GameTournamentAPI_HostAddress = https://localhost:7248
 
 GET {{GameTournamentAPI_HostAddress}}/weatherforecast/
 Accept: application/json
+
+###
+
+@search=string
+GET {{GameTournamentAPI_HostAddress}}/api/tournament?search={{search}}
+
+###
+
+GET {{GameTournamentAPI_HostAddress}}/weatherforecast
 
 ###
