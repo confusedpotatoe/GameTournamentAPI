@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using GameTournamentAPI.Data;
+using GameTournamentAPI.Services;
+using GameTournamentAPI.Models;
+using GameTournamentAPI.Controllers;
 
 namespace GameTournamentAPI
 {
@@ -17,6 +22,8 @@ namespace GameTournamentAPI
             builder.Services.AddOpenApi();
 
             var app = builder.Build();
+            
+            builder.Services.AddScoped<ITournamentService, TournamentService>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
