@@ -13,3 +13,7 @@ GET {{GameTournamentAPI_HostAddress}}/api/tournament?search={{search}}
 GET {{GameTournamentAPI_HostAddress}}/weatherforecast
 
 ###
+
+GET {{GameTournamentAPI_HostAddress}}/api/tournament?search={{search}}
+
+###
