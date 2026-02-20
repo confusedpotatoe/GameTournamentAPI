@@ -15,7 +15,10 @@ namespace GameTournamentAPI.Services
 
         public async Task<List<Tournament>> GetAllAsync(string? search)
         {
-            var query = _context.Tournaments.AsQueryable();
+            var query = _context.Tournaments
+            .Include(t => t.Players)
+            .AsQueryable();
+
             if (!string.IsNullOrEmpty(search))
             {
                 query = query.Where(t => t.Title.Contains(search) || t.Description.Contains(search));
@@ -25,7 +28,9 @@ namespace GameTournamentAPI.Services
 
         public async Task<Tournament?> GetByIdAsync(int id)
         {
-            return await _context.Tournaments.FindAsync(id);
+            return await _context.Tournaments
+                .Include (t => t.Players)
+                .FirstOrDefaultAsync(t => t.Id == id);
         }
 
         public async Task<Tournament> CreateAsync(Tournament tournament)

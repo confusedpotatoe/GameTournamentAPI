@@ -8,5 +8,8 @@
         public int MaxPlayers { get; set; }
         public DateTime Date { get; set; }
 
+        // one to many relationship with players
+        public List<Player>? Players { get; set; }
+
     }
 }

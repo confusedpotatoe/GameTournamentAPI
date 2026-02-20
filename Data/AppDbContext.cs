@@ -14,6 +14,13 @@ namespace GameTournamentAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Player>() 
+                .HasMany(p => p.Tournaments) 
+                .WithMany(t => t.Players) 
+                .HasForeignKey("PlayerId")
+                .DeleteBehavior(DeleteBehavior.Cascade); 
+
+            // seed data
             modelBuilder.Entity<Tournament>().HasData(
                 new Tournament
                 {
@@ -32,6 +39,8 @@ namespace GameTournamentAPI.Data
                     Date = new DateTime(2026, 12, 5)
                 }
             );
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
