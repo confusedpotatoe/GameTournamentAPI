@@ -11,5 +11,27 @@ namespace GameTournamentAPI.Data
         }
 
         public DbSet<Tournament> Tournaments { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Tournament>().HasData(
+                new Tournament
+                {
+                    Id = 1,
+                    Title = "Summer Showdown",
+                    Description = "Open tournament for competitive players.",
+                    MaxPlayers = 16,
+                    Date = new DateTime(2026, 6, 15)
+                },
+                new Tournament
+                {
+                    Id = 2,
+                    Title = "Winter Clash",
+                    Description = "Indoor championship event.",
+                    MaxPlayers = 8,
+                    Date = new DateTime(2026, 12, 5)
+                }
+            );
+        }
     }
 }
