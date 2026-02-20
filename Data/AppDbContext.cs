@@ -11,6 +11,7 @@ namespace GameTournamentAPI.Data
         }
 
         public DbSet<Tournament> Tournaments { get; set; }
+        public DbSet<Player> Players { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,6 +41,27 @@ namespace GameTournamentAPI.Data
                 }
             );
 
+            // Seed Player
+            modelBuilder.Entity<Player>().HasData(
+                new Player
+                {
+                    Id = 1,
+                    Name = "Alice",
+                    TournamentId = 1
+                },
+                new Player
+                {
+                    Id = 2,
+                    Name = "Bob",
+                    TournamentId = 1
+                },
+                new Player
+                {
+                    Id = 3,
+                    Name = "Charlie",
+                    TournamentId = 2
+                }
+            );
             base.OnModelCreating(modelBuilder);
         }
     }
