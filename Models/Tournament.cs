@@ -1,4 +1,7 @@
-﻿namespace GameTournamentAPI.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace GameTournamentAPI.Models
 {
     public class Tournament
     {
@@ -9,7 +12,7 @@
         public DateTime Date { get; set; }
 
         // one to many relationship with players
-        public List<Player>? Players { get; set; }
+        public List<Player>? Players { get; set; } = new List<Player>();
 
     }
 }

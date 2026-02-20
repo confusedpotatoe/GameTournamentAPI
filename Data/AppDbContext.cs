@@ -15,10 +15,10 @@ namespace GameTournamentAPI.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Player>() 
-                .HasMany(p => p.Tournaments) 
+                .HasOne(p => p.Tournament) 
                 .WithMany(t => t.Players) 
-                .HasForeignKey("PlayerId")
-                .DeleteBehavior(DeleteBehavior.Cascade); 
+                .HasForeignKey(p => p.TournamentId)
+                .OnDelete(DeleteBehavior.Cascade); 
 
             // seed data
             modelBuilder.Entity<Tournament>().HasData(
